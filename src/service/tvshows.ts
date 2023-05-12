@@ -7,5 +7,5 @@ export const getAnimations = async () => {
 };
 
 export const getTopRatedTvShows = async () => {
-  return httpClient.get('/movie/top_rated').then(res => res.data.results);
+  return httpClient.get('/tv/top_rated').then(res => res.data.results);
 };

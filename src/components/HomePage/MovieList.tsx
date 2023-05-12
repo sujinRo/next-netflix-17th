@@ -11,7 +11,7 @@ type MovieListProps = {
 export default function MovieList({ title, videos }: MovieListProps) {
   return (
     <VideoListBox>
-      <h2>{title}</h2>
+      <Title>{title}</Title>
       <ul>
         {videos &&
           videos!.map(video => (
@@ -25,6 +25,12 @@ export default function MovieList({ title, videos }: MovieListProps) {
     </VideoListBox>
   );
 }
+
+const Title = styled.h2`
+  font-size: 20.92px;
+  font-weight: 700;
+  color: #ffffff;
+`;
 
 const VideoImg = styled.img`
   width: 103px;

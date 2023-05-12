@@ -15,11 +15,13 @@ export default function TvShowList({ title, videos }: TvShowListProps) {
       <VideoListBox>
         {videos &&
           videos!.map(video => (
-            <VideoImg
-              key={video.id}
-              src={`https://image.tmdb.org/t/p/original${video.poster_path}`}
-              alt="videoImg"
-            />
+            <ImgBox key={video.id}>
+              <VideoImg
+                key={video.id}
+                src={`https://image.tmdb.org/t/p/original${video.poster_path}`}
+                alt="videoImg"
+              />
+            </ImgBox>
           ))}
       </VideoListBox>
     </VideoListContainer>
@@ -35,13 +37,18 @@ const Title = styled.h2`
   margin: 0 0 0 16px;
 `;
 
+const ImgBox = styled.div`
+  width: 103px;
+  height: 161px;
+  margin-right: 7px;
+`;
+
 const VideoImg = styled.img`
   width: 103px;
   height: 161px;
   border-radius: 2px;
-  margin-right: 7px;
-  object-fit: cover;
 
+  object-fit: cover;
   cursor: pointer;
 `;
 
@@ -50,8 +57,5 @@ const VideoListBox = styled.ul`
   display: flex;
   overflow-x: auto;
   padding-left: 12px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  overflow-y: hidden;
 `;

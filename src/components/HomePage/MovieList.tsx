@@ -58,8 +58,5 @@ const VideoListBox = styled.ul<{ isCircle: boolean }>`
   display: flex;
   overflow-x: auto;
   padding-left: 12px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  overflow-y: hidden;
 `;

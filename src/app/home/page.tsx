@@ -8,6 +8,7 @@ import {
 } from '../../service/movies';
 import { getAnimations, getTopRatedTvShows } from '../../service/tvshows';
 import { IMovie, ITvShow } from '@/interface/interface';
+import Header from '@/components/HomePage/Header';
 import Bar from '@/components/HomePage/Bar';
 import MovieList from '../../components/HomePage/MovieList';
 import TvShowList from '../../components/HomePage/TvShowList';
@@ -16,12 +17,6 @@ import styled from 'styled-components';
 
 const HomePageBox = styled.div`
   width: 375px;
-`;
-
-const Wrapper = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const Image = styled.img`
@@ -54,10 +49,9 @@ export default function HomePage() {
 
   return (
     <HomePageBox>
-      <Wrapper>
-        {/* 이미지 */}
-        <Bar />
-      </Wrapper>
+      <Header />
+      {/* 이미지 */}
+      <Bar />
 
       <MovieList title={'Previews'} videos={upcomingMovies} isCircle={true} />
       <MovieList

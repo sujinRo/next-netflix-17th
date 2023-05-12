@@ -1,24 +1,25 @@
 import styled from 'styled-components';
 
 const Bars = styled.div`
+  width: 375px;
   display: flex;
   justify-content: center;
+  margin: 13px 0 43px 0;
 `;
 
 const BarBox = styled.div`
   display: flex;
   width: 259px;
   height: 45px;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
 `;
 
 const Text = styled.div`
   font-size: 13.64px;
   font-weight: 400;
   margin-top: 3px;
+  color: white;
 `;
 
 const PlayButton = styled.div`

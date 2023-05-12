@@ -47,6 +47,7 @@ export default function HomePage() {
 
 const HomePageBox = styled.div`
   background-color: black;
+  width: 375px;
 `;
 
 const VideoImg = styled.img`

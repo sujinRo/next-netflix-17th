@@ -6,36 +6,60 @@ import styled from 'styled-components';
 type MovieListProps = {
   title: string;
   videos: IMovie[] | undefined;
+  isCircle: boolean;
 };
 
-export default function MovieList({ title, videos }: MovieListProps) {
+export default function MovieList({ title, videos, isCircle }: MovieListProps) {
   return (
-    <VideoListBox>
-      <Title>{title}</Title>
-      <ul>
+    <VideoListContainer>
+      <Title isCircle={isCircle}>{title}</Title>
+      <VideoListBox isCircle={isCircle}>
         {videos &&
           videos!.map(video => (
-            <VideoImg
-              key={video.id}
-              src={`https://image.tmdb.org/t/p/original${video.poster_path}`}
-              alt="videoImg"
-            />
+            <ImgBox key={video.id} isCircle={isCircle}>
+              <VideoImg
+                src={`https://image.tmdb.org/t/p/original${video.poster_path}`}
+                alt="videoImg"
+                isCircle={isCircle}
+              />
+            </ImgBox>
           ))}
-      </ul>
-    </VideoListBox>
+      </VideoListBox>
+    </VideoListContainer>
   );
 }
 
-const Title = styled.h2`
-  font-size: 20.92px;
+const VideoListContainer = styled.div``;
+
+const Title = styled.h2<{ isCircle: boolean }>`
+  font-size: ${props => (props.isCircle ? '26.75px' : '20.92px')};
   font-weight: 700;
   color: #ffffff;
+  margin: 0 0 0 16px;
 `;
 
-const VideoImg = styled.img`
-  width: 103px;
-  height: 161px;
-  border-radius: 2px;
+const ImgBox = styled.div<{ isCircle: boolean }>`
+  width: ${props => (props.isCircle ? '102px' : '103px')};
+  height: ${props => (props.isCircle ? '102px' : '161px')};
+  margin-right: 7px;
 `;
 
-const VideoListBox = styled.div``;
+const VideoImg = styled.img<{ isCircle: boolean }>`
+  width: ${props => (props.isCircle ? '102px' : '103px')};
+  height: ${props => (props.isCircle ? '102px' : '161px')};
+  border-radius: ${props => (props.isCircle ? '50%' : '2px')};
+
+  object-fit: cover;
+  cursor: pointer;
+`;
+
+const VideoListBox = styled.ul<{ isCircle: boolean }>`
+  margin: ${props => (props.isCircle ? '23px 0 28px 0' : '14px 0 22px 0')};
+  display: flex;
+  overflow-x: auto;
+  padding-left: 12px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;

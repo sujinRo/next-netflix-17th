@@ -10,9 +10,9 @@ type TvShowListProps = {
 
 export default function TvShowList({ title, videos }: TvShowListProps) {
   return (
-    <VideoListBox>
+    <VideoListContainer>
       <Title>{title}</Title>
-      <ul>
+      <VideoListBox>
         {videos &&
           videos!.map(video => (
             <VideoImg
@@ -21,21 +21,37 @@ export default function TvShowList({ title, videos }: TvShowListProps) {
               alt="videoImg"
             />
           ))}
-      </ul>
-    </VideoListBox>
+      </VideoListBox>
+    </VideoListContainer>
   );
 }
+
+const VideoListContainer = styled.div``;
 
 const Title = styled.h2`
   font-size: 20.92px;
   font-weight: 700;
   color: #ffffff;
+  margin: 0 0 0 16px;
 `;
 
 const VideoImg = styled.img`
   width: 103px;
   height: 161px;
   border-radius: 2px;
+  margin-right: 7px;
+  object-fit: cover;
+
+  cursor: pointer;
 `;
 
-const VideoListBox = styled.div``;
+const VideoListBox = styled.ul`
+  margin: 14px 0 22px 0;
+  display: flex;
+  overflow-x: auto;
+  padding-left: 12px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;

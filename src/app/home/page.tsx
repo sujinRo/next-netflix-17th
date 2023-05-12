@@ -8,6 +8,8 @@ import {
 } from '../../service/movies';
 import { getAnimations, getTopRatedTvShows } from '../../service/tvshows';
 import { IMovie, ITvShow } from '@/interface/interface';
+import MovieList from '../../components/HomePage/MovieList';
+import styled from 'styled-components';
 
 export default function HomePage() {
   const { data: upcomingMovies } = useQuery<IMovie[]>(
@@ -32,8 +34,31 @@ export default function HomePage() {
   );
 
   return (
-    <ul>
-      {nowPlayingMovies && nowPlayingMovies!.map(video => <p>{video.title}</p>)}
-    </ul>
+    <>
+      <MovieList title={'Previews'} videos={upcomingMovies} />
+      {/*
+      <VideoListBox>
+        <h2>Now Playing</h2>
+        <ul>
+          {nowPlayingMovies &&
+            nowPlayingMovies!.map(video => (
+              <VideoImg
+                key={video.id}
+                src={`https://image.tmdb.org/t/p/original${video.poster_path}`}
+                alt="videoImg"
+              />
+            ))}
+        </ul>
+      </VideoListBox>
+      */}
+    </>
   );
 }
+
+const VideoImg = styled.img`
+  width: 103px;
+  height: 161px;
+  border-radius: 2px;
+`;
+
+const VideoListBox = styled.div``;

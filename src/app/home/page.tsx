@@ -36,9 +36,17 @@ export default function HomePage() {
 
   return (
     <HomePageBox>
-      <MovieList title={'Previews'} videos={upcomingMovies} />
-      <MovieList title={'Now Playing'} videos={nowPlayingMovies} />
-      <MovieList title={'Horror Movies'} videos={horrorMovies} />
+      <MovieList title={'Previews'} videos={upcomingMovies} isCircle={true} />
+      <MovieList
+        title={'Now Playing'}
+        videos={nowPlayingMovies}
+        isCircle={false}
+      />
+      <MovieList
+        title={'Horror Movies'}
+        videos={horrorMovies}
+        isCircle={false}
+      />
       <TvShowList title={'Animations'} videos={animations} />
       <TvShowList title={'Top Rated TV Shows'} videos={topRatedTvShows} />
     </HomePageBox>
@@ -46,12 +54,6 @@ export default function HomePage() {
 }
 
 const HomePageBox = styled.div`
-  background-color: black;
+  //background-color: black;
   width: 375px;
-`;
-
-const VideoImg = styled.img`
-  width: 103px;
-  height: 161px;
-  border-radius: 2px;
 `;

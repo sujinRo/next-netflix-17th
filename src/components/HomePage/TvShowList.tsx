@@ -10,32 +10,52 @@ type TvShowListProps = {
 
 export default function TvShowList({ title, videos }: TvShowListProps) {
   return (
-    <VideoListBox>
+    <VideoListContainer>
       <Title>{title}</Title>
-      <ul>
+      <VideoListBox>
         {videos &&
           videos!.map(video => (
-            <VideoImg
-              key={video.id}
-              src={`https://image.tmdb.org/t/p/original${video.poster_path}`}
-              alt="videoImg"
-            />
+            <ImgBox key={video.id}>
+              <VideoImg
+                key={video.id}
+                src={`https://image.tmdb.org/t/p/original${video.poster_path}`}
+                alt="videoImg"
+              />
+            </ImgBox>
           ))}
-      </ul>
-    </VideoListBox>
+      </VideoListBox>
+    </VideoListContainer>
   );
 }
+
+const VideoListContainer = styled.div``;
 
 const Title = styled.h2`
   font-size: 20.92px;
   font-weight: 700;
   color: #ffffff;
+  margin: 0 0 0 16px;
+`;
+
+const ImgBox = styled.div`
+  width: 103px;
+  height: 161px;
+  margin-right: 7px;
 `;
 
 const VideoImg = styled.img`
   width: 103px;
   height: 161px;
   border-radius: 2px;
+
+  object-fit: cover;
+  cursor: pointer;
 `;
 
-const VideoListBox = styled.div``;
+const VideoListBox = styled.ul`
+  margin: 14px 0 22px 0;
+  display: flex;
+  overflow-x: auto;
+  padding-left: 12px;
+  overflow-y: hidden;
+`;

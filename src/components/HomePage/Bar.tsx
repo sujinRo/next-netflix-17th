@@ -24,6 +24,11 @@ const Text = styled.div`
 
 const PlayButton = styled.div`
   cursor: pointer;
+  transition: all 100ms ease-out;
+
+  &:hover {
+    opacity: 70%;
+  }
 `;
 
 const InfoButton = styled.div`

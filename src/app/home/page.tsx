@@ -50,7 +50,16 @@ export default function HomePage() {
   return (
     <HomePageBox>
       <Header />
-      {/* 이미지 */}
+      {nowPlayingMovies && nowPlayingMovies! && (
+        <Image
+          src={`https://image.tmdb.org/t/p/original${
+            nowPlayingMovies[
+              Math.floor(Math.random() * nowPlayingMovies.length)
+            ].poster_path
+          }`}
+          alt={'randomImg'}
+        />
+      )}
       <Bar />
 
       <MovieList title={'Previews'} videos={upcomingMovies} isCircle={true} />

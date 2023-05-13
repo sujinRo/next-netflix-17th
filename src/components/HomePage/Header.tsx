@@ -1,20 +1,29 @@
 import { SiNetflix } from 'react-icons/si';
 import styled from 'styled-components';
-//import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-const Wrapper = styled.div`
+interface ScrollInterface {
+  scroll: boolean;
+}
+
+const Wrapper = styled.div<ScrollInterface>`
   position: absolute;
   position: fixed;
-  padding: 33px 0 15px 0;
-  background-color: black;
+  display: flex;
+  width: 375px;
+  height: 87px;
+  justify-content: center;
+  background: ${({ scroll }) => (scroll ? '#121212' : 'transparent')};
 `;
 
 const Bar = styled.div`
   display: flex;
+  flex-direction: row;
   align-items: center;
-  width: 375px;
-  height: 35px;
+  width: 338px;
+  height: 57px;
   justify-content: space-around;
+  margin-top: 15px;
 `;
 
 const Text = styled.div`
@@ -25,8 +34,28 @@ const Text = styled.div`
 `;
 
 export default function Header() {
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentPosition = window.pageYOffset;
+
+      if (currentPosition >= 100) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper scroll={scroll}>
       <Bar>
         <SiNetflix size={'35px'} color="#B1060F" />
         <Text>TV Shows</Text>

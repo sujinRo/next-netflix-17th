@@ -13,6 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>Netflix</title>
+        <link rel="icon" type="image/png" href="/netflix-logo.png" />
+      </head>
+
       <body>
         <Providers>{children}</Providers>
       </body>

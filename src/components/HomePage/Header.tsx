@@ -11,9 +11,10 @@ const Wrapper = styled.div<ScrollInterface>`
   position: fixed;
   display: flex;
   width: 375px;
-  height: 87px;
+  height: 80px;
   justify-content: center;
   background: ${({ scroll }) => (scroll ? '#121212' : 'transparent')};
+  transition: all 100ms ease-out;
 `;
 
 const Bar = styled.div`

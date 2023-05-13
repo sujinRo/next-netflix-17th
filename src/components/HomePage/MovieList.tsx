@@ -51,6 +51,12 @@ const VideoImg = styled.img<{ isCircle: boolean }>`
 
   object-fit: cover;
   cursor: pointer;
+
+  transition: all 100ms ease-out;
+
+  &:hover {
+    transform: scale(0.95);
+  }
 `;
 
 const VideoListBox = styled.ul<{ isCircle: boolean }>`

@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  flex-basis: 20%;
   align-items: center;
   position: fixed;
   bottom: 0;
@@ -20,6 +19,7 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   display: flex;
+  flex-basis: 20%;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
